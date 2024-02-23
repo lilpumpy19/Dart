@@ -1,3 +1,4 @@
+import 'package:first_project/task.dart';
 import 'package:flutter/material.dart';
 
 class NewPage extends StatefulWidget {
@@ -24,7 +25,7 @@ class _NewPageState extends State<NewPage> with AutomaticKeepAliveClientMixin {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.add),  
+            icon: const Icon(Icons.add),
             onPressed: _incrementCounter,
           ),
         ],
@@ -32,34 +33,31 @@ class _NewPageState extends State<NewPage> with AutomaticKeepAliveClientMixin {
       body: ListView.builder(
         itemCount: itemCount,
         itemBuilder: (context, index) => ListTile(
-
           leading: IconButton(
             icon: const Icon(Icons.insert_drive_file_outlined),
-            color: index % 2 == 0 ? Colors.white : Colors.white30, 
-            onPressed: _incrementCounter,   
-          ), 
-          
+            color: index % 2 == 0 ? Colors.white : Colors.white30,
+            onPressed: _incrementCounter,
+          ),
           title: Text(
             'Задача: $index',
             style: index % 2 == 0
                 ? Theme.of(context).textTheme.bodyMedium
                 : Theme.of(context).textTheme.titleMedium,
           ),
-
           subtitle: Text(
             'Описание : $index',
             style: index % 2 == 0
-
                 ? Theme.of(context).textTheme.bodySmall
                 : Theme.of(context).textTheme.titleSmall,
           ),
-
           trailing: IconButton(
             icon: const Icon(Icons.arrow_forward_ios),
-            color: index % 2 == 0 ? Colors.white : Colors.white30, 
-            onPressed: _incrementCounter,   
+            color: index % 2 == 0 ? Colors.white : Colors.white30,
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) =>  Task('Задача: $index', 'Описание : $index')));
+            },
           ),
-
         ),
       ),
     );
