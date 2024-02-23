@@ -1,4 +1,6 @@
+import 'package:first_project/second.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +14,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'The best app in the WORLD',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
+          scaffoldBackgroundColor: Color.fromARGB(255, 42, 41, 41),
+          useMaterial3: true,
+          textTheme: const TextTheme(
+            bodyMedium: 
+                  TextStyle(
+                    color: Colors.white,
+                    fontSize: 20
+                   ),
+            bodySmall: TextStyle(
+              color: Colors.white,
+              fontSize: 15
+            )
+          )),
       home: const MyHomePage(title: 'First Project'),
     );
   }
@@ -56,21 +69,25 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              const Text(
+              Text(
                 'Нажали:',
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
+                '$_counter раз',
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const NewPage()));
+        },
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.abc),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
