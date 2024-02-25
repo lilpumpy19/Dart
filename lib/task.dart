@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Task extends StatefulWidget {
-  final String taskName;
-  final String description;
+  String taskName;
+  String description;
 
   Task(this.taskName, this.description);
 
@@ -15,7 +15,15 @@ class _TaskState extends State<Task> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.taskName),
+        title: TextField(
+          controller: TextEditingController(text: widget.taskName),
+          onSubmitted: (newName) {
+            setState(() {
+              widget.taskName = newName;
+            });
+          },
+          style: Theme.of(context).textTheme.displayMedium,
+        ),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Padding(
@@ -23,7 +31,16 @@ class _TaskState extends State<Task> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(widget.description),
+            TextField(
+              controller: TextEditingController(text: widget.description),
+              onSubmitted: (newDescription) {
+                setState(() {
+                  widget.description = newDescription;
+                });
+              },
+              style: Theme.of(context).textTheme.bodyMedium,
+              
+            ),
           ],
         ),
       ),

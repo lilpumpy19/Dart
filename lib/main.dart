@@ -17,9 +17,11 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
           scaffoldBackgroundColor: Color.fromARGB(255, 42, 41, 41),
           useMaterial3: true,
-          
+          inputDecorationTheme: const InputDecorationTheme(
+            border: InputBorder.none, 
+          ),
           textTheme: const TextTheme(
-            
+              displayMedium: TextStyle(color: Colors.black, fontSize: 22),
               titleMedium: TextStyle(color: Colors.white30, fontSize: 20),
               titleSmall: TextStyle(color: Colors.white30, fontSize: 15),
               bodyMedium: TextStyle(color: Colors.white, fontSize: 20),

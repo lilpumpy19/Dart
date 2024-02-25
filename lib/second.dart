@@ -28,7 +28,8 @@ class _NewPageState extends State<NewPage> with AutomaticKeepAliveClientMixin {
             icon: const Icon(Icons.add),
             onPressed: _incrementCounter,
           ),
-        ],
+        ],  
+        
       ),
       body: ListView.builder(
         itemCount: itemCount,
